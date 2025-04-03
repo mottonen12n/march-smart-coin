@@ -7,7 +7,7 @@ Added rules are as follows:
   * 1/16 chance for 16 to beat 1 seed.
   * 1/8 chance for 15 to beat 2 seed.
   * 1/4 chance for 14 to beat 3 seed.
-  * 1/4 chance for 8 to beat 1 seed (if 1 seed survives 1st round).
+  * 1/4 chance for 8/9 to beat 1 seed (if 1 seed survives 1st round).
   * All other matches are 1/2 for each seed to win.
   
 
