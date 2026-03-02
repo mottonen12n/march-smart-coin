@@ -1,21 +1,29 @@
 import random as r
-import traceback
-import sys
+import draw_bracket_tk as db
 
 def main_menu():
-    loop = True
     try:
+        loop = True
+        picks = generatePicks()
+        teams = [f"A {i}" for i in range(1,17)] + [f"B {i}" for i in range(1,17)] + [f"C {i}" for i in range(1,17)] + [f"D {i}" for i in range(1,17)]
+        winners = generateWinners(teams, picks)
         while(loop):
             print("Make a selection:")
-            selection = input("1: Generate Bracket Picks\n0: Exit\n")
+            selection = input("1: Show Bracket Picks\n2: Show Winners List\n3: Draw Bracket\n0: Exit\n")
             match selection:
                 case "1":
-                    picks = generatePicks()
+                    print("Here are the picks for this current session, reload the application to reset picks:")
                     print("South Bracket Picks to Final Four: " + picks[0])
                     print("East Bracket Picks to Final Four: " + picks[1])
                     print("West Bracket Picks to Final Four: " + picks[2])
                     print("Midwest Bracket Picks to Final Four: " + picks[3])
                     print("Final Four Picks: " + picks[4])
+                case "2":
+                    print("Here is the Winners list based on the current picks:")
+                    print(generateWinners(teams, picks))
+                case "3": 
+                    print("Bracket will open in new window. Close the window to continue here.")
+                    db.main(teams, winners)
                 case "0":
                     loop = False
                 case _:
@@ -96,4 +104,41 @@ def onein16():
     else:
         return "0"
 
+def generateWinners(teams, picks):
+    winners = []
+    for b in range(4):
+        for i in range(8):
+            match picks[b][i]:
+                case "0": winners.append(teams[b*16+i*2])
+                case "1": winners.append(teams[b*16+i*2+1])
+    
+    for b in range(4):
+        for i in range(4):
+            match picks[b][i + 8]:
+                case "0": winners.append(winners[b*8+i*2])
+                case "1": winners.append(winners[b*8+i*2+1])
+
+    for b in range(4):
+        for i in range(2):
+            match picks[b][i + 12]:
+                case "0": winners.append(winners[b*4+i*2+32])
+                case "1": winners.append(winners[b*4+i*2+33])
+
+    for b in range(4):
+        match picks[b][14]:
+            case "0": winners.append(winners[b*2+48])
+            case "1": winners.append(winners[b*2+49])
+    
+    for i in range(2):
+        match picks[4][i]:
+            case "0": winners.append(winners[i*2+56])
+            case "1": winners.append(winners[i*2+57])
+
+    match picks[4][2]:
+        case "0": winners.append(winners[60])
+        case "1": winners.append(winners[61])
+
+    return winners
+
 main_menu()
+#print(generateWinners([f"A {i}" for i in range(16)] + [f"B {i}" for i in range(16)] + [f"C {i}" for i in range(16)] + [f"D {i}" for i in range(16)],generatePicks()))
