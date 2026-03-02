@@ -13,3 +13,5 @@ Added rules are as follows:
 
 Output of this will be a string of 1's and 0's with 0 representing the team on the top of the matchup winning as viewed when looking at the bracket (not necessarily the top seeded team).
 There would then be 4 of these strings with 15 numbers each, one for each section/division of the bracket. Then a final 3 number string for the Final Four and Championship.
+
+Now has the ability to show the list of winners and draw a simple visual of the bracket.
