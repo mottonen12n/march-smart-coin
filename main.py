@@ -7,7 +7,7 @@ def main_menu():
         #loop = True
     picks = generatePicks()
     #teams = [f"A {i}" for i in range(1,17)] + [f"B {i}" for i in range(1,17)] + [f"C {i}" for i in range(1,17)] + [f"D {i}" for i in range(1,17)]
-    teams = ["East1","East16","East8","East9","East5","East12","East4","East13","East6","East11","East3","East14","East7","East10","East2","East15","Widwest1","Widwest16","Widwest8","Widwest9","Widwest5","Widwest12","Widwest4","Widwest13","Widwest6","Widwest11","Widwest3","Widwest14","Widwest7","Widwest10","Widwest2","Widwest15","South1","South16","South8","South9","South5","South12","South4","South13","South6","South11","South3","South14","South7","South10","South2","South15","West1","West16","West8","West9","West5","West12","West4","West13","West6","West11","West3","West14","West7","West10","West2","West15"]
+    teams = ["East1","East16","East8","East9","East5","East12","East4","East13","East6","East11","East3","East14","East7","East10","East2","East15","Midwest1","Midwest16","Midwest8","Midwest9","Midwest5","Midwest12","Midwest4","Midwest13","Midwest6","Midwest11","Midwest3","Midwest14","Midwest7","Midwest10","Midwest2","Midwest15","South1","South16","South8","South9","South5","South12","South4","South13","South6","South11","South3","South14","South7","South10","South2","South15","West1","West16","West8","West9","West5","West12","West4","West13","West6","West11","West3","West14","West7","West10","West2","West15"]
     winners = generateWinners(teams, picks)
     def showPicks():
         canvas.delete("all")
