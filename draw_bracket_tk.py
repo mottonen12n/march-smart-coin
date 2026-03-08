@@ -322,6 +322,9 @@ class BracketCanvas(tk.Frame):
                     self.canvas.create_line(start_a, y_child_a, xp, y_parent, width=1)
                     self.canvas.create_line(start_b, y_child_b, xp, y_parent, width=1)
 
+    def close(self):
+        self.master.destroy()
+
 
 def main(teams=None, winners=None):
     if teams is None:
@@ -330,7 +333,7 @@ def main(teams=None, winners=None):
         winners = generate_placeholder_winners(64)
 
     root = tk.Tk()
-    root.title("64-Team Single-Elimination Bracket")
+    root.title("Smart Coin Generated Bracket")
 
     frame = BracketCanvas(root, teams, winners)
     frame.pack(fill="both", expand=True)
@@ -346,6 +349,8 @@ def main(teams=None, winners=None):
     info.pack(side="bottom", fill="x")
 
     root.mainloop()
+
+    
 
 
 if __name__ == "__main__":

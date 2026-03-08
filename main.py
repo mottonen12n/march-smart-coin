@@ -1,13 +1,40 @@
 import random as r
 import draw_bracket_tk as db
+import tkinter as tk
 
 def main_menu():
-    try:
-        loop = True
-        picks = generatePicks()
-        teams = [f"A {i}" for i in range(1,17)] + [f"B {i}" for i in range(1,17)] + [f"C {i}" for i in range(1,17)] + [f"D {i}" for i in range(1,17)]
-        winners = generateWinners(teams, picks)
-        while(loop):
+    #try:
+        #loop = True
+    picks = generatePicks()
+    #teams = [f"A {i}" for i in range(1,17)] + [f"B {i}" for i in range(1,17)] + [f"C {i}" for i in range(1,17)] + [f"D {i}" for i in range(1,17)]
+    teams = ["East1","East16","East8","East9","East5","East12","East4","East13","East6","East11","East3","East14","East7","East10","East2","East15","Widwest1","Widwest16","Widwest8","Widwest9","Widwest5","Widwest12","Widwest4","Widwest13","Widwest6","Widwest11","Widwest3","Widwest14","Widwest7","Widwest10","Widwest2","Widwest15","South1","South16","South8","South9","South5","South12","South4","South13","South6","South11","South3","South14","South7","South10","South2","South15","West1","West16","West8","West9","West5","West12","West4","West13","West6","West11","West3","West14","West7","West10","West2","West15"]
+    winners = generateWinners(teams, picks)
+    def showPicks():
+        canvas.delete("all")
+        canvas.create_text(10, 10, text="Here are the picks for this current session:\nEast Bracket Picks to Final Four: " + picks[0] +"\nMidwest Bracket Picks to Final Four: " + picks[1] + "\nSouth Bracket Picks to Final Four: " + picks[2] + "\nWest Bracket Picks to Final Four: " + picks[3] + "\nFinal Four Picks: " + picks[4], anchor="nw")
+        return
+
+    def showBracket():
+        canvas.delete("all")
+        canvas.create_text(10, 10, text="Bracket will open in new window.", anchor="nw")
+        db.main(teams,winners)
+        return
+
+    root = tk.Tk()
+    root.title("Smart Coin Bracket Menu")
+
+    picksButton = tk.Button(root, text = "Show Picks", width = 30, command = showPicks, anchor="w")
+    picksButton.pack()
+    bracketButton = tk.Button(root, text = "Show Bracket", width = 30, command = showBracket, anchor="w")
+    bracketButton.pack()
+    exitButton = tk.Button(root, text="Exit", width=30, command=root.destroy, anchor="w")
+    exitButton.pack()
+    canvas = tk.Canvas(root, width=300, height=100)
+    canvas.pack()
+
+
+    root.mainloop()
+"""while(loop):
             print("Make a selection:")
             selection = input("1: Show Bracket Picks\n2: Show Winners List\n3: Draw Bracket\n0: Exit\n")
             match selection:
@@ -27,10 +54,10 @@ def main_menu():
                 case "0":
                     loop = False
                 case _:
-                    print("Invalid input, please try again.")
-    except(Exception):
+                    print("Invalid input, please try again.")"""
+"""    except(Exception):
         #traceback.print_exc(file=sys.stdout)
-        print("Error occured, try again.")
+        print("Error occured, try again.")"""
 
 def generatePicks():
     result = []
